@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Carlos</span>
+    <button mat-raised-button [routerLink]="'/home'" color="warn">Home</button>
+    <button mat-raised-button [routerLink]="'/proveedores'">Proveedores</button>
+    <button mat-raised-button [routerLink]="'/nuevo'">Nuevo Proveedor</button>
+    <button mat-raised-button [routerLink]="'/nuevo-producto'">Nuevo Producto</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!--
+importar en styles.css el siguiente código:
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+para activar los colores: primary (azul), accent(rosado) y warn (rojo)
+-->

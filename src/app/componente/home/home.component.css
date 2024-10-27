@@ -1,0 +1,10 @@
+/* src/app/home/home.component.css */
+.container {
+  padding: 20px;
+}
+
+.logout {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

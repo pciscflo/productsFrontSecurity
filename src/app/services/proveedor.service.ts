@@ -8,7 +8,7 @@ import {Proveedor} from "../model/proveedor";
   providedIn: 'root'
 })
 export class ProveedorService {
-  private url = environment.apiUrl
+  private url = environment.apiUrl+"/api";
   private http: HttpClient = inject(HttpClient);
   private listaCambio = new Subject<Proveedor[]>();
 

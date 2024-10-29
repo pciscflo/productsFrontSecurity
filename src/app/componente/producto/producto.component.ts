@@ -14,6 +14,7 @@ import {TipoProducto} from "../../model/tipo-producto";
 import {TipoProductoService} from "../../services/tipo-producto.service";
 import {NgForOf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
+import {NavbarComponent} from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-producto',
@@ -35,7 +36,8 @@ import {MatButton} from "@angular/material/button";
     MatSelect,
     MatOption,
     NgForOf,
-    MatButton
+    MatButton,
+    NavbarComponent
   ],
   templateUrl: './producto.component.html',
   styleUrl: './producto.component.css'

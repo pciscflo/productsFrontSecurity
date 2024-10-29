@@ -23,6 +23,7 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {ConfirmDialogoComponent} from "./confirm-dialogo/confirm-dialogo.component";
+import {NavbarComponent} from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-proveedor-listar',
@@ -43,7 +44,8 @@ import {ConfirmDialogoComponent} from "./confirm-dialogo/confirm-dialogo.compone
     MatSort,
     MatSortHeader,
     MatButton,
-    RouterLink
+    RouterLink,
+    NavbarComponent
   ],
   templateUrl: './proveedor-listar.component.html',
   styleUrl: './proveedor-listar.component.css'

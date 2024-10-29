@@ -1,8 +1,19 @@
 // src/app/login/login.component.ts
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButton} from "@angular/material/button";
+import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatOption} from "@angular/material/core";
+import {MatSelect} from "@angular/material/select";
+import {ProductoService} from "../../services/producto.service";
+import {TipoProductoService} from "../../services/tipo-producto.service";
+import {LoginService} from "../../services/login.service";
+import {Producto} from "../../model/producto";
+import {RequestDto} from "../../model/request-dto";
 
 
 @Component({
@@ -10,19 +21,50 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, MatButton, MatCard, MatCardContent, MatCardTitle, MatFormField, MatInput, MatLabel, MatOption, MatSelect, ReactiveFormsModule]
 })
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  router: Router = inject(Router);
+  loginForm: FormGroup;
+  fb = inject(FormBuilder);
+  loginService: LoginService = inject(LoginService);
 
-  constructor(private router: Router) {}
+  constructor() {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    })
+  }
 
-  onLogin() {
-    //if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/home']);
-   // } else {
-   //   alert('Credenciales incorrectas');
-   // }
+  ngOnInit() {
+    if(localStorage.getItem('token')!=null){
+      localStorage.removeItem('token');
+      console.log("Token eliminado");
+    }
+    this.loadForm()
+  }
+
+  loadForm(): void {
+     console.log("Form");
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const requestDto: RequestDto = new RequestDto()
+      requestDto.username = this.loginForm.value.username;
+      requestDto.password = this.loginForm.value.password;
+      this.loginService.login(requestDto).subscribe({
+        next: (data: Object): void => {
+          console.log("Login response:", data);
+        }
+      })
+      alert("Login ok!")
+      this.router.navigate(['/home'])
+    } else {
+      alert("Formulario no valido!")
+      console.log("Formulario no valido");
+    }
   }
 }

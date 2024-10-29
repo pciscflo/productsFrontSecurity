@@ -9,7 +9,7 @@ import {TipoProducto} from "../model/tipo-producto";
   providedIn: 'root'
 })
 export class TipoProductoService {
-  private url = environment.apiUrl
+  private url = environment.apiUrl + "/api";
   private http: HttpClient = inject(HttpClient);
   private listaCambio = new Subject<TipoProducto[]>();
 

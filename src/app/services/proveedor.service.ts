@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, provideHttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
 import {Proveedor} from "../model/proveedor";
 
@@ -9,6 +9,9 @@ import {Proveedor} from "../model/proveedor";
 })
 export class ProveedorService {
   private url = environment.apiUrl+"/api";
+  //para el uso de HttClient se debe registrar en app.config.ts cómo provider a
+  // provideHttpClient()
+
   private http: HttpClient = inject(HttpClient);
   private listaCambio = new Subject<Proveedor[]>();
 

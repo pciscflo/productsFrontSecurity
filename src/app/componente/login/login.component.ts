@@ -14,6 +14,7 @@ import {TipoProductoService} from "../../services/tipo-producto.service";
 import {LoginService} from "../../services/login.service";
 import {Producto} from "../../model/producto";
 import {RequestDto} from "../../model/request-dto";
+import {ResponseDto} from "../../model/response-dto";
 
 
 @Component({
@@ -55,9 +56,10 @@ export class LoginComponent {
       const requestDto: RequestDto = new RequestDto()
       requestDto.username = this.loginForm.value.username;
       requestDto.password = this.loginForm.value.password;
+      let responseDTO: ResponseDto = new ResponseDto();
       this.loginService.login(requestDto).subscribe({
-        next: (data: Object): void => {
-          console.log("Login response:", data);
+        next: (data: ResponseDto): void => {
+          console.log("Login response ROL:", data.roles);
         }
       })
       alert("Login ok!")

@@ -100,7 +100,7 @@ export class ProductoComponent {
           }
         })
        alert("Producto registrado!")
-      this.router.navigate([''])
+      this.router.navigate(['/home'])
     } else {
       alert("Formulario no valido!")
       console.log("Formulario no valido");

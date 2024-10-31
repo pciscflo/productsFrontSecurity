@@ -25,7 +25,6 @@ export const loginInterceptor: HttpInterceptorFn = (req, next) => {
     catchError(error => {
       console.log("Error en la petición");
       if (error.status === HttpStatusCode.Forbidden) {
-        //this.loginService.logout();
         alert("NO TIENES PERMISOS!")
         return EMPTY;
       } else {

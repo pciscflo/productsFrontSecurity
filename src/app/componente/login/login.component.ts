@@ -59,7 +59,9 @@ export class LoginComponent {
       let responseDTO: ResponseDto = new ResponseDto();
       this.loginService.login(requestDto).subscribe({
         next: (data: ResponseDto): void => {
-          console.log("Login response ROL:", data.roles);
+          console.log("Login response ROLs:", data.roles);
+          console.log("Login response ROL:", data.roles[0]);
+          localStorage.setItem('rol', data.roles[0]);
         }
       })
       alert("Login ok!")

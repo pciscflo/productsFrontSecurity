@@ -103,7 +103,7 @@ export class ProveedorNuevoEditComponent {
           }
         );
       }
-      this.router.navigate(['proveedores']);
+      this.router.navigate(['/proveedores']);
     } else {
       console.log("Formulario no valido");
     }

@@ -62,6 +62,10 @@ export class LoginComponent {
           console.log("Login response ROLs:", data.roles);
           console.log("Login response ROL:", data.roles[0]);
           localStorage.setItem('rol', data.roles[0]);
+        },
+        error: (error: any) => {
+          console.error(error);
+          this.router.navigate(['login']);
         }
       })
       alert("Login ok!")
